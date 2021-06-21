@@ -106,6 +106,51 @@ public class SumAtKthLevel {
 		 
 		 return count(root.left)+count(root.right)+1;
 	 }
+	 
+	 
+	 public int Diameter(Node root)
+	 {
+		 	if(root==null)
+		 	{
+		 		return 0;
+		 	}
+		 	
+		 	if(root.left==null && root.right==null)
+		 	{
+		 		return 1;
+		 	}
+		 	int lheight=height(root.left);
+		 	int rheight=height(root.right);
+		 	int currDiameter=lheight+rheight+1;
+		 	
+		 	int lDiameter=Diameter(root.left);
+		 	int rDaimeter=Diameter(root.right);
+		 	
+		 	return Math.max(currDiameter, Math.max(lDiameter, rDaimeter));
+	 }
+	 
+	 int diameter;
+	 public int optimiseDiameter(Node root)
+	 {
+		 
+		 if(root==null)
+		 {
+			 return 0;
+		 }
+		 if(root.left==null && root.right==null)
+		 	{
+		 		return 1;
+		 	}
+		 
+		 int lh=optimiseDiameter(root.left);
+		 int rh=optimiseDiameter(root.right);
+		 
+		 
+		 
+		 diameter=Math.max(diameter,(lh+rh+1));
+		 
+		 return Math.max(lh,rh)+1;
+	 }
 	
 	
 	
@@ -143,6 +188,16 @@ public class SumAtKthLevel {
 		
 		
 		System.out.println(ob.height(root));
+		
+		
+		System.out.println(ob.Diameter(root));
+		
+		
+		
+		
+		ob.optimiseDiameter(root);
+		System.out.println(ob.diameter);
+		
 		
 		
 		
