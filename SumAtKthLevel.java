@@ -419,6 +419,31 @@ public class SumAtKthLevel {
 		    }
 		    System.out.println(m.values());
 		  }
+	  
+	  Node prev=null;
+	  public Node btTODll(Node node)
+	  {
+		  if(node==null) {
+			  return node;
+		  }
+		 Node head= btTODll(node.left);
+		  
+		  if(prev==null)
+		  {
+			  head=node;
+		  }
+		  else
+		  {
+			  node.left=prev;
+			  prev.right=node;
+			  
+		  }
+		  prev=node;
+		  
+		  btTODll(node.right);
+		  
+		  return head;
+	  }
 	
 
 	public static void main(String[] args) {
@@ -494,6 +519,10 @@ public class SumAtKthLevel {
 		ob.printzigzagTraversal(root);
 		
 		System.out.println();
+		
+		
+		
+		ob.btTODll(root);
 		
 		
 
